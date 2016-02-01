@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to products_url, notice: "Login Successful!"
     else
+      flash.now[:alert] = "Invalid login credentials!"
       render :new
     end
   end

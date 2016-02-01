@@ -1,5 +1,18 @@
 <%= form_for(@product) do |f| %>
 
+  <% if @product.errors.any? %>
+  <div id = "error-explained">
+    <h2><%= pluralize(@product.errors.count, "error") %> This product was not saved becuase: </h2>
+
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
+
+  </div>
+  <% end %>
+
   <div class = "field">
     <%= f.label :name %> <br>
     <%= f.text_field :name %>
@@ -19,4 +32,4 @@
     <%= f.submit %>
   </div>
 
-<%end%>
+<% end %>

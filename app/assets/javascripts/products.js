@@ -3,11 +3,7 @@ $(document).on('ready page:load', function(){
     event.preventDefault();
     var searchValue = $('#search').val();
 
-    $.ajax({
-      url: '/products?search=' + searchValue,
-      type: 'GET',
-      datatype: 'html'
-    })
+    $.get('/products?search=' + searchValue)
     .done(function(data){
       $('#products').html(data);
      });
